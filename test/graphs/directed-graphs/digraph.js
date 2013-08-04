@@ -1,9 +1,13 @@
 // Node.js tests
 var buster = require("buster");
-//var myLib = require("../lib/my-lib");
+buster.spec.expose();
+var Digraph = require("../../../src/graphs/directed-graphs/digraph.js").Digraph;
 
 buster.testCase("A module", {
     "states the obvious": function () {
         assert(false);
-    }
+    },
+    "Digraph is available" : function () {
+    	assert(!!Digraph)
+    },
 });

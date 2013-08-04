@@ -1,0 +1,6 @@
+{
+	"cmd": ["buster test | perl -pe 's/\\e\\[?.*?[\\@-~]//g' "],
+	"shell" : true,
+	"working_dir" : "${project_path:${folder}}",
+	"path": "/opt/local/bin:/usr/local/bin:$PATH"
+}
