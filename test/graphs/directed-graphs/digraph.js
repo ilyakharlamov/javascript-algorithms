@@ -21,6 +21,7 @@ buster.testCase("digraph", {
 			len,
 			pair,
 			digraph,
+			reverse,
 			tinyDAG = [ [4, 2 ],
 						[2, 3 ],
 						[3, 2 ],
@@ -50,5 +51,9 @@ buster.testCase("digraph", {
 		}
 		assert.equals(digraph.V(), 13);
 		assert.equals(digraph.E(), tinyDAG.length);
-	}
+		assert.equals(digraph.adj(0).size(), 2);
+		digraph=digraph.reverse();
+		
+	},
+
 });

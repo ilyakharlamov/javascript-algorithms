@@ -11,7 +11,7 @@ var exports = exports || {};
 		this._current = current;
 	}
 	ListIterator.prototype.hasNext = function hasNext() {
-		return this._current !== undefined;
+		return this._current !== null;
 	};
 	ListIterator.prototype.next = function next() {
 		if (!this.hasNext()) {

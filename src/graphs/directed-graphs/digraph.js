@@ -56,6 +56,31 @@ var exports = exports || {};
 		this._adj[v].add(w);
 		this._E++;
 	};
+	/**
+	 * Return the list of vertices pointed to from vertex v as an Iterable.
+	 * @param  {number} vertexId
+	 * @return {fundamentals.stacks.bag}
+	 */
+	Digraph.prototype.adj = function (vertexId) {
+		if (vertexId === undefined) {
+			throw new Error("function Digraph.adj requires an argument");
+		}
+		if (vertexId < 0 || vertexId >= this._V) {
+			throw new Error("IndexOutOfBoundsException");
+		}
+		return this._adj[vertexId];
+	};
 
-	exports.Digraph = Digraph;
+	Digraph.prototype.reverse = function reverse() {
+		var R = new Digraph(this._V), i, iter;
+		for (i = 0; i < this._V; i++) {
+			iter = this.adj(i).iterator();
+			while (iter.hasNext()) {
+				R.addEdge(iter.next(), i);
+			}
+		}
+		return R;
+	};
+
+		exports.Digraph = Digraph;
 })();

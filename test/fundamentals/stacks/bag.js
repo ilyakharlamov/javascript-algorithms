@@ -1,4 +1,6 @@
+/*global assert, require*/
 // Node.js tests
+"use strict";
 var buster = require("buster");
 buster.spec.expose();
 var Bag = require("../../../src/fundamentals/stacks/bag.js").Bag;
@@ -8,7 +10,7 @@ buster.testCase("fundamentals/stacks/bag", {
 		assert(true);
 	},
 	"Bag is available" : function () {
-		assert(!!Bag)
+		assert(!!Bag);
 	},
 	"basic checks" : function () {
 		var bag = new Bag();
@@ -19,5 +21,13 @@ buster.testCase("fundamentals/stacks/bag", {
 		var anotherbag = new Bag();
 		assert(anotherbag.isEmpty());
 		assert.equals(0, anotherbag.size());
+	},
+	"iterator checks" : function () {
+		var bag = new Bag();
+		bag.add({});
+		var iter = bag.iterator();
+		assert(iter.hasNext());
+		iter.next();
+		assert.equals(iter.hasNext(), false);
 	},
 });
